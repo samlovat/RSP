@@ -1,3 +1,5 @@
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 // Linked List Class
 #include "Node.h"
 #include <iostream>
@@ -35,3 +37,4 @@ class LinkedList {
             return;
         }
 };
+#endif
