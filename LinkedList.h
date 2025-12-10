@@ -32,6 +32,8 @@ class LinkedList {
                     Node* temp = this->Head;
                     if(this->Head->nextNode != nullptr){
                         this->Head = temp->nextNode;
+                    }else{
+                        this->Head = nullptr;
                     }
                     delete temp;
                     return;
@@ -68,6 +70,10 @@ class LinkedList {
             return this->search(searchee, curr->nextNode);
         };
         void print(Node* curr){
+            if(curr == nullptr){
+                std::cerr << "Empty List" << std::endl;
+                return;
+            }
             std::cout << curr->data << " | ";
             if(curr->nextNode == nullptr){
                 return;
