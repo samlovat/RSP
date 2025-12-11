@@ -24,7 +24,7 @@ class LinkedList {
             if(curr->nextNode->data == searchee){
                 return curr;
             }
-            return this->searchForPredecessor(searchee, curr->nextNode);
+            this->searchForPredecessor(searchee, curr->nextNode);
         };
         void del(int deletee){
             if(this->Head != nullptr){
@@ -69,7 +69,7 @@ class LinkedList {
             if(curr->nextNode == nullptr){
                 return nullptr;
             }
-            return this->search(searchee, curr->nextNode);
+            this->search(searchee, curr->nextNode);
         };
         void print(Node* curr){
             if(curr == nullptr){
