@@ -47,10 +47,12 @@ class LinkedList {
                 std::cerr << "Node doesn't exist" << std::endl;
                 return;
             }
-            std::cout << "pred: " << pred->data << std::endl;
+            // std::cout << "pred: " << pred->data << std::endl;
             Node* temp = pred->nextNode;
             if(temp->nextNode != nullptr){
                 pred->nextNode = temp->nextNode;
+            }else{
+                pred->nextNode = nullptr;
             }
             delete temp;
             return;
