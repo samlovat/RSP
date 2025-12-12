@@ -6,10 +6,18 @@ class Node{
         int data;
         Node* Left;
         Node* Right;
+        Node* Parent;
         Node(int data_){
             this->data = data_;
             this->Left = nullptr;
             this->Right = nullptr;
+            this->Parent = nullptr;
+        }
+        Node(int data_, Node* parent_){
+            this->data = data_;
+            this->Left = nullptr;
+            this->Right = nullptr;
+            this->Parent = parent_;
         }
 };
 
