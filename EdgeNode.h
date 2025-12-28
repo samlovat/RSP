@@ -3,7 +3,7 @@
 
 class edgeNode{
     public:
-        int y;  //Other node in edge
+        int y;  //Other vertex in edge
         int weight;     //Weight of edge if relevant
         edgeNode* next;     //Next edge adjacent to starting vertex (x)
         edgeNode(int y_, int weight_, edgeNode* next_){
