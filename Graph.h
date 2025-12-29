@@ -53,6 +53,15 @@ class Graph{
             return;
         };
 
+        void CollectValues(int nedges_, int nvertices_){
+            printf("\nHow many vertices: ");
+            scanf("%d", &nvertices);
+            printf("\nHow many edges: ");
+            scanf("%d", &nedges);
+            this->init(nedges, nvertices);
+            return;
+        };
+
         void printGraph(){             //Iterate through vertices and print list 
             edgeNode* temp;             //of other vertices it connects to via an edge
             for(int i = 0; i < this->nvertices; i++){
@@ -68,19 +77,20 @@ class Graph{
 
         void del(){};
 
-        void ZeroState(){           //Reset state array before any DFS or BFS traversal
-            for(int i = 0; i < nvertices; i++){
-                this->state[i] = UNDISCOVERED;
-            }
-        }
-
         void processVertex(int x){
             printf("\nProcessed %d", x+1);
             this->state[x] = PROCESSED;
             return;
         };
 
+        void ZeroState(){           //Reset state array before any DFS or BFS traversal
+            for(int i = 0; i < nvertices; i++){
+                this->state[i] = UNDISCOVERED;
+            }
+        }
+
         void BFS(int rootVertex){
+            ZeroState();            //Set State array to show all vertices are UNDISCOVERED
             edgeNode* temp;
             std::queue<int> ProcessNext;
             ProcessNext.push(rootVertex);
@@ -101,14 +111,20 @@ class Graph{
             return;
         };
 
-        void DFS(int rootVertex){       //Call with index of rootNode i.e. if you want to start at vertex 1 call DFS(0)
+        void DFS(int rootVertex){
+            ZeroState();
+            RecursiveDFS(rootVertex);
+            return;
+        }
+
+        void RecursiveDFS(int rootVertex){       //Call with index of rootNode i.e. if you want to start at vertex 1 call DFS(0)
             edgeNode* temp = this->edges[rootVertex];
             this->state[rootVertex] = DISCOVERED;
             int degree = this->degree[rootVertex];
             for(int i = 0; i < degree; i++){
                 if(state[temp->y] == UNDISCOVERED){
                     // printf("\nEdge %d - %d in DFS tree", rootVertex+1, temp->y+1);
-                    DFS(temp->y); 
+                    RecursiveDFS(temp->y); 
                 }
                 temp = temp->next;
             }
